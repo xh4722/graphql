@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "sourceMap": true,
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "framework/*": ["../../*"]
+    }
+  },
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+}

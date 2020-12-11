@@ -1,0 +1,48 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {
+    "quotemark": [true, "single"],
+    "semicolon": [true, "never"],
+    "no-unused-expression": true,
+    "file-header": [
+      true,
+      {
+        "match": "Copyright",
+        "allow-single-line-comments": true,
+        "enforce-trailing-newline": false,
+        "default": "Copyright (C) 2016-present, Yuansuan.cn"
+      }
+    ]
+  },
+  "rules": {
+    "quotemark": [true, "single"],
+    "member-access": [false],
+    "ordered-imports": [false],
+    "max-line-length": [true, 300],
+    "member-ordering": [false],
+    "interface-name": [false],
+    "arrow-parens": false,
+    "object-literal-sort-keys": false,
+    "no-string-literal": false,
+    "no-var-requires": false,
+    "no-reference": false,
+    "semicolon": [true, "never"],
+    "max-classes-per-file": false,
+    "variable-name": [true, "ban-keywords"],
+    "file-header": [
+      true,
+      {
+        "match": "Copyright",
+        "allow-single-line-comments": true,
+        "enforce-trailing-newline": false,
+        "default": "Copyright (C) 2016-present, Yuansuan.cn"
+      }
+    ],
+    "prettier": true
+  }
+}
