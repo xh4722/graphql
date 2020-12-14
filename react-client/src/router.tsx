@@ -1,33 +1,18 @@
+/*!
+ * Copyright (C) 2016-present, Yuansuan.cn
+ */
+
 import React from 'react'
-import { Icon } from 'antd'
+import { HomeOutlined } from '@ant-design/icons'
+import { RouterType } from '@ys/components/dist/PageLayout'
 
-interface IPage {
-  component?: () => React.ReactNode
-  icon?: React.ReactNode
-  path: string
-  name?: string
-  children?: IPage[]
-}
+export const NORMAL_PAGES: RouterType[] = []
 
-export const NORMAL_PAGES: IPage[] = []
-
-export const LAYOUT_PAGES: IPage[] = [
+export const LAYOUT_PAGES: RouterType[] = [
   {
     component: () => import('./pages/Home'),
     path: '/home',
-    icon: <Icon type='home' />,
+    icon: <HomeOutlined />,
     name: '主页',
-  },
-  {
-    path: '/twoLevel',
-    name: '二级页面',
-    icon: <Icon type='home' />,
-    children: [
-      {
-        path: '/secondary',
-        name: '副页',
-        component: () => import('./pages/404'),
-      },
-    ],
   },
 ]

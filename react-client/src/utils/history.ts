@@ -2,6 +2,6 @@
  * Copyright (C) 2016-present, Yuansuan.cn
  */
 
-import { createHashHistory } from 'history'
+import { createBrowserHistory } from 'history'
 
-export default createHashHistory()
+export default createBrowserHistory()

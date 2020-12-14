@@ -5,17 +5,17 @@
 import { Module, Global } from '@nestjs/common'
 import { AppController } from './app.controller'
 import { GraphQLModule } from '@nestjs/graphql'
-import { AuthorModule } from './author/author.module'
+import { UserModule } from './user/user.module'
 
 @Global()
 @Module({
   controllers: [AppController],
   imports: [
-    AuthorModule,
+    UserModule,
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
       definitions: {
-        path: require('path').join(process.cwd(), 'src/graphql.schema.ts'),
+        path: require('path').join(process.cwd(), 'src/graphql.ts'),
         outputAs: 'class',
       },
     }),

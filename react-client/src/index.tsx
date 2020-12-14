@@ -8,17 +8,13 @@ import { ThemeProvider } from 'styled-components'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
 import 'moment/locale/zh-cn'
-import ApolloClient from 'apollo-boost'
-import { ApolloProvider } from '@apollo/react-hooks'
 import { Modal } from '@ys/components'
-import theme from './themes'
+import { theme } from '@ys/utils/constant'
 import App from '@/App'
 import { StyledRoot } from './style'
 import './index.css'
-
-const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql',
-})
+import { ApolloProvider } from '@apollo/client'
+import { apolloClient } from '@/utils'
 
 // config the theme of Modal
 Modal.theme = theme
@@ -32,7 +28,7 @@ window.addEventListener('unhandledrejection', event => {
 
 const renderApp = () =>
   ReactDOM.render(
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <ThemeProvider theme={theme}>
         <ConfigProvider locale={zhCN}>
           <StyledRoot id='styledRoot'>

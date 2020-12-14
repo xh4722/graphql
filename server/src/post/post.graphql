@@ -1,5 +1,0 @@
-type Post {
-  id: Int!
-  title: String!
-  votes: Int
-}

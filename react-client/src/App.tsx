@@ -6,8 +6,9 @@ import { hot } from 'react-hot-loader/root'
 import Loadable from 'react-loadable'
 import * as React from 'react'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { Page } from '@/components'
 import history from '@/utils/history'
-import Layout from './Layout'
+import { PageLayout } from '@ys/components'
 import { NORMAL_PAGES, LAYOUT_PAGES } from './router'
 
 const Loading = ({ error }) => {
@@ -24,9 +25,11 @@ const UserRoute = ({ component: Component, path, perm, ...rest }) => {
       {...rest}
       path={path}
       render={matchProps => (
-        <Layout>
-          <Component {...matchProps} />
-        </Layout>
+        <PageLayout routers={LAYOUT_PAGES}>
+          <Page>
+            <Component {...matchProps} />
+          </Page>
+        </PageLayout>
       )}
     />
   )
@@ -55,7 +58,7 @@ const App = () => {
             ? item.children.map(child =>
                 createRoute(UserRoute)({
                   ...child,
-                  path: `${item.path}${child.path}`,
+                  path: child.path,
                 })
               )
             : createRoute(UserRoute)(item)

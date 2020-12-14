@@ -1,0 +1,21 @@
+type User {
+  id: ID!
+  firstName: String
+  lastName: String
+  age: Int
+  todoes: [Todo]
+}
+
+type Query {
+  user(id: ID!): User
+}
+
+input UserInput {
+  firstName: String
+  lastName: String
+  age: Int
+}
+
+type Mutation {
+  updateUser(id: ID!, payload: UserInput!): User
+}
