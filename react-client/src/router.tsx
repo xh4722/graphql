@@ -15,4 +15,15 @@ export const LAYOUT_PAGES: RouterType[] = [
     icon: <HomeOutlined />,
     name: '主页',
   },
+  {
+    name: '二级页面',
+    icon: <HomeOutlined />,
+    children: [
+      {
+        path: '/secondary',
+        name: 'TodoList',
+        component: () => import('./pages/TodoList'),
+      },
+    ],
+  },
 ]

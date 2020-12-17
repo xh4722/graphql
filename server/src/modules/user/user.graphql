@@ -8,6 +8,7 @@ type User {
 
 type Query {
   user(id: ID!): User
+  userList: [User]
 }
 
 input UserInput {

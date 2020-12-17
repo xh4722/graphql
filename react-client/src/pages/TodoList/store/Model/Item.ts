@@ -4,16 +4,15 @@
 
 import { observable, action } from 'mobx'
 
-class BaseTodo {
+export class BaseItem {
   @observable id: string
   @observable name: string
   @observable done: boolean
+  @observable user_id: string
 }
 
-export type TodoRequest = BaseTodo
-
-export class Todo extends BaseTodo {
-  constructor(props?: Partial<TodoRequest>) {
+export class Item extends BaseItem {
+  constructor(props?: Partial<BaseItem>) {
     super()
 
     if (props) {
@@ -22,7 +21,7 @@ export class Todo extends BaseTodo {
   }
 
   @action
-  update = (props: Partial<TodoRequest>) => {
+  update(props: Partial<BaseItem>) {
     Object.assign(this, props)
   }
 }

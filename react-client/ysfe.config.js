@@ -1,3 +1,5 @@
+/* Copyright (C) 2016-present, Yuansuan.cn */
+
 module.exports = {
   iconfontUrl: '//at.alicdn.com/t/font_1364348_5zwjh87sut.js',
   webpack(config) {
@@ -7,6 +9,7 @@ module.exports = {
         overlay: true,
         proxy: {
           '/api': process.env.PROXY || 'http://localhost:3001',
+          '/graphql': process.env.PROXY || 'http://localhost:3001',
         },
         historyApiFallback: true,
       }

@@ -2,14 +2,12 @@
  * Copyright (C) 2016-present, Yuansuan.cn
  */
 
+const moduleAlias = require('module-alias')
+moduleAlias.addAlias('@', __dirname)
+moduleAlias.addAlias('@root', require('path').join(__dirname, '..'))
+
 import { Logger } from '@nestjs/common'
-import {
-  initApp,
-  config,
-  FormatResponseInterceptor,
-  ValidationPipe,
-  loggerMiddleware,
-} from '@ys/api'
+import { initApp, config, ValidationPipe, loggerMiddleware } from '@ys/api'
 import { AppModule } from './app.module'
 
 declare const module: any
@@ -37,7 +35,6 @@ async function bootstrap() {
     },
   })
 
-  // app.useGlobalInterceptors(new FormatResponseInterceptor())
   app.useGlobalPipes(new ValidationPipe())
 
   const { port } = config.app

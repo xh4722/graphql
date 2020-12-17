@@ -3,22 +3,16 @@
  */
 
 import { observable, action } from 'mobx'
-import { Todo, TodoRequest } from './Todo'
 
-class BaseUser {
+export class BaseUser {
   @observable id: string
   @observable firstName: string
   @observable lastName: string
   @observable age: number
-  @observable todoes: Todo[] = []
-}
-
-export type UserRequest = Omit<BaseUser, 'todoes'> & {
-  todoes: TodoRequest[]
 }
 
 export class User extends BaseUser {
-  constructor(props?: Partial<UserRequest>) {
+  constructor(props?: Partial<BaseUser>) {
     super()
 
     if (props) {
@@ -27,11 +21,7 @@ export class User extends BaseUser {
   }
 
   @action
-  update = ({ todoes, ...props }: Partial<UserRequest>) => {
+  update = (props: Partial<BaseUser>) => {
     Object.assign(this, props)
-
-    if (todoes) {
-      this.todoes = todoes.map(item => new Todo(item))
-    }
   }
 }

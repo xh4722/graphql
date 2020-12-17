@@ -13,8 +13,7 @@ import { theme } from '@ys/utils/constant'
 import App from '@/App'
 import { StyledRoot } from './style'
 import './index.css'
-import { ApolloProvider } from '@apollo/client'
-import { apolloClient } from '@/utils'
+import { env } from '@/domain'
 
 // config the theme of Modal
 Modal.theme = theme
@@ -28,16 +27,16 @@ window.addEventListener('unhandledrejection', event => {
 
 const renderApp = () =>
   ReactDOM.render(
-    <ApolloProvider client={apolloClient}>
-      <ThemeProvider theme={theme}>
-        <ConfigProvider locale={zhCN}>
-          <StyledRoot id='styledRoot'>
-            <App />
-          </StyledRoot>
-        </ConfigProvider>
-      </ThemeProvider>
-    </ApolloProvider>,
+    <ThemeProvider theme={theme}>
+      <ConfigProvider locale={zhCN}>
+        <StyledRoot id='styledRoot'>
+          <App />
+        </StyledRoot>
+      </ConfigProvider>
+    </ThemeProvider>,
     document.querySelector('#root')
   )
 
-renderApp()
+env.init().finally(() => {
+  renderApp()
+})

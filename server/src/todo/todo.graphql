@@ -1,9 +1,0 @@
-type Todo {
-  id: ID!
-  name: String!
-  done: Boolean
-}
-
-type Query {
-  todo(id: String!): Todo
-}
